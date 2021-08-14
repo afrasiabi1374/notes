@@ -1,0 +1,9 @@
+.active{
+    color: navy;
+    
+    transition: all 2s;
+    transform: translateX(200px);
+}
+.text-danger{
+    font-weight: bolder;
+}
