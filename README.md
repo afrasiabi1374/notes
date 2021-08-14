@@ -1,4 +1,4 @@
-# ali-playground
+# ali playground
 
 ## Build Setup
 
