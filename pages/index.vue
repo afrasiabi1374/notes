@@ -29,7 +29,7 @@
     >
       <v-card>
         <v-card-title>
-          <todo-title v-if="myValueDialog!==undefined"  :toTitle="myValueDialog.title"></todo-title>
+          <todo-title  v-if="myValueDialog!==undefined"  :toTitle="myValueDialog.title"></todo-title>
         </v-card-title>
           <todo-text v-if="myValueDialog!==undefined" :toText="myValueDialog.text" ></todo-text>
         <v-card-actions>
