@@ -8,7 +8,8 @@ export const  state = () =>({
         {id:1,title:"go to gym",text:"go to gym and give program "},
         {id:1,title:"english",text:"go to english language class"},
         {id:1,title:"programming exersize",text:"do programming exersise with vue"},
-    ]
+    ],
+    aNote:undefined
 
 })
 
@@ -17,6 +18,12 @@ export const mutations = {
 increment(state){
 
     state.counter++
+
+},
+
+giveTextalTodo(state){
+
+    state.aNote = state
 
 }
 
