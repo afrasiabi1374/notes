@@ -4,25 +4,25 @@
 
     <h1>my to do app</h1> 
 
-  <v-container class="grey lighten-5">
-    <v-row no-gutters>
-      <v-col
-        v-for="(Note,index) in allNotes" :key="index"
-        cols="12"
-        sm="4"
-      >
-        <v-card @click="MyDialog=true;myValueDialog=Note;logger()" 
-          class="pa-2"
-          outlined
-          tile
+    <v-container class="grey lighten-5">
+      <v-row no-gutters>
+        <v-col
+          v-for="(Note, index) in allNotes" :key="index"
+          cols="12"
+          sm="4"
         >
-           <card-note  :oneNote="Note"></card-note>
-        </v-card>
-      </v-col>
-    </v-row>
-  </v-container>
-<dialog></dialog>
-    <v-row justify="center">
+          <v-card @click="MyDialog=true;myValueDialog=Note;logger()" 
+            class="pa-2"
+            outlined
+            tile
+          >
+            <card-note  :oneNote="Note"></card-note>
+          </v-card>
+        </v-col>
+      </v-row>
+    </v-container>
+
+    
     <v-dialog
       v-model="MyDialog"
       width="600px"
@@ -51,7 +51,7 @@
         </v-card-actions>
       </v-card>
     </v-dialog>
-  </v-row>
+
   </div>
 </template>
 
