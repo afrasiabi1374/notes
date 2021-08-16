@@ -1,83 +1,69 @@
 <template>
-  <div>
+<div class="index-container">
     <todo-nav></todo-nav>
-
-    <h1>my to do app</h1> 
-
+  <div style="width:70%">
     <v-container class="grey lighten-5">
       <v-row no-gutters>
         <v-col
-          v-for="(Note, index) in allNotes" :key="index"
+          v-for="(note, index) in allNotes" :key="index"  
           cols="12"
           sm="4"
         >
-          <v-card @click="MyDialog=true;myValueDialog=Note;logger()" 
+          <v-card 
             class="pa-2"
             outlined
-            tile
+            tile 
+            @click="test(note)"
           >
-            <card-note  :oneNote="Note"></card-note>
+            <card-note  :oneNote="note"></card-note>
           </v-card>
         </v-col>
       </v-row>
     </v-container>
-
-    
-    <v-dialog
-      v-model="MyDialog"
-      width="600px"
-    >
-      <v-card>
-        <v-card-title>
-          <todo-title  v-if="myValueDialog!==undefined"  :toTitle="myValueDialog.title"></todo-title>
-        </v-card-title>
-          <todo-text v-if="myValueDialog!==undefined" :toText="myValueDialog.text" ></todo-text>
-        <v-card-actions>
-          <v-spacer></v-spacer>
-          <v-btn
-            color="green darken-1"
-            text
-            @click="dialog = false"
-          >
-            Disagree
-          </v-btn>
-          <v-btn
-            color="green darken-1"
-            text
-            @click="dialog = false"
-          >
-            Agree
-          </v-btn>
-        </v-card-actions>
-      </v-card>
-    </v-dialog>
-
+      <note-form :MyDialog="MyDialog" :noteProp="noteProp"></note-form>
+    </div>
   </div>
 </template>
-
 <script>
+import NoteForm from '~/components/todoNotes/NoteForm';
 import CardNote from '~/components/todoNotes/CardNote';
 import TodoNav from '~/components/todoNotes/nav/TodoNav';
 export default {
-  components:{CardNote,TodoNav},
-data(){
-  return{
-    allNotes:this.$store.state.helloWorld.notes,
-    MyDialog:false,
-    myValueDialog:undefined
+  components: {CardNote, TodoNav,NoteForm},
+  data(){
+    return{
+      allNotes: this.$store.state.helloWorld.notes,
+      singleNote:"",
+      MyDialog: false,
+      noteProp: undefined,
+      editTitle: "",
+      editedNote: {
+        id: 1,
+        title: "taghi",
+        text: "taghi nazhad"
+      }
+    }
+  },
+  methods:{
+    deleteNote(){
+      this.$store.commit('helloWorld/deleteNote', this.myValueDialog[1])
+    },
+    editNote(){
+      if (this.myValueDialog !== undefined) {
+        this.$store.commit('helloWorld/updateNote', this.myValueDialog[0])
+      }
+    },
+    test(note){
+      this.MyDialog=!this.MyDialog
+      this.noteProp = note
+    }
   }
-},
-methods:{
- 
-logger(){
-  console.log(this.myValueDialog);
-}
-
-
-}
 }
 </script>
 
 <style>
+.index-container{
 
+display: flex;
+}
 </style>

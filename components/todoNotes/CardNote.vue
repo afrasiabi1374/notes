@@ -8,8 +8,6 @@
     <br>
     <p> {{  oneNote.text.substr(0,21)+'...'}} </p>
 
-
-
 </v-card>
 
   </div>
