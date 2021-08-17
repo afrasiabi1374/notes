@@ -6,7 +6,7 @@
       </v-card-title>
       <v-textarea   v-model="formData.text" />
                 <v-autocomplete
-                  v-model="tags"
+                  v-model="items"
                   :items="tags"
                   outlined
                   dense
@@ -14,6 +14,8 @@
                   small-chips
                   label="Outlined"
                   multiple
+                  item-text="name"
+                  @change="dd"
                ></v-autocomplete>
       <v-card-actions>
         <v-spacer></v-spacer>
@@ -30,8 +32,7 @@
   
     data(){
       return {
-        items: ['foo', 'bar', 'fizz', 'buzz'],
-        values: ['foo', 'bar'],
+        items: [],
         tags:this.$store.state.helloWorld.tags,
         
         formData:{
@@ -44,32 +45,35 @@
     },
   watch:{
     value(){
-      this.formData = this.value? JSON.parse(JSON.stringify(this.value)): {title: '', text: ''}
-      console.log(this.value);
+      this.formData = this.value? JSON.parse(JSON.stringify(this.value)):{title: '', text: ''}
     }
   },
   methods:{
+    dd(){
+      console.log(this.items);
+    },
+    deleteNote(){
+      this.$store.commit('helloWorld/deleteNote', this.value);
+    },
 
-        deleteNote(){
-        
-          this.$store.commit('helloWorld/deleteNote', this.value);
-          
-        },
+    editNote(){
+      this.$store.commit('helloWorld/updateNote', this.formData)
+      this.$emit('input', undefined);
+      // this.note = undefined
+    },
 
-        editNote(){
+    addNote(){
+      this.$store.commit('helloWorld/createNote', this.formData)
+    }
 
-          this.$store.commit('helloWorld/updateNote', this.formData)
-          this.$emit('input', undefined);
-          // this.note = undefined
-        },
-
-        addNote(){
-         
-          this.$store.commit('helloWorld/createNote', this.formData)
-          
-        }
-
-}
+  },
+  computed:{
+    computedTags(){
+      return this.tags.map((e)=>{
+        return e.name
+      })
+    }
+  }
 
 }
 </script>
