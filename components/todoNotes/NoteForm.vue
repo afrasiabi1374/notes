@@ -15,7 +15,8 @@
                   label="Outlined"
                   multiple
                   item-text="name"
-                  @change="dd"
+                  @change="$emit('changeTags',items)"
+                  
                ></v-autocomplete>
       <v-card-actions>
         <v-spacer></v-spacer>
@@ -68,11 +69,14 @@
 
   },
   computed:{
-    computedTags(){
-      return this.tags.map((e)=>{
-        return e.name
-      })
-    }
+    // computedTags(){
+    //   return this.tags.map((e)=>{
+    //     return e.name
+    //   })
+    // }
+
+
+
   }
 
 }
