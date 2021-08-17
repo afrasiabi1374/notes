@@ -4,13 +4,8 @@
     <br>
     <p> {{  note.text.substr(0,21)+'...'}} </p>
     <div class="container">
-        <v-chip
-          v-for="(tag,tagIndex) in tags" :key="tagIndex"
-          class="ma-2"
-          x-small>
-          
-
-          {{tag}}
+        <v-chip v-for="t in note.tags" :key="t" class="ma-2" x-small>
+          {{ $store.getters['helloWorld/tagLabel'](t) }}
         </v-chip>
     </div>
   </v-card>
