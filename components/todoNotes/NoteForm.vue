@@ -1,23 +1,22 @@
 <template>
-  <v-dialog :value="value" width="600px" >
+  <v-dialog :value="value" width="600px">
     <v-card v-if="value">
       <v-card-title>
-         <v-text-field v-model="formData.title" />
+         <v-text-field v-model="formData.title"/>
       </v-card-title>
-      <v-textarea   v-model="formData.text" />
-                <v-autocomplete
-                  v-model="items"
-                  :items="tags"
-                  outlined
-                  dense
-                  chips
-                  small-chips
-                  label="Outlined"
-                  multiple
-                  item-text="name"
-                  @change="$emit('changeTags',items)"
-                  
-               ></v-autocomplete>
+      <v-textarea   v-model="formData.text"/>
+         <v-autocomplete
+           v-model="items"
+           :items="tags"
+           outlined
+           dense
+           chips
+           small-chips
+           label="Outlined"
+           multiple
+           item-text="name"
+           @change="$emit('changeTags',items)"
+        ></v-autocomplete>
       <v-card-actions>
         <v-spacer></v-spacer>
         <v-btn v-if=" (value.title || value.text )  !=='' "   color="warning" text @click="deleteNote()">delete</v-btn>

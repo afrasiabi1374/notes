@@ -17,32 +17,32 @@
   </div>
 </template>
 <script>
-import NoteForm from '~/components/todoNotes/NoteForm';
-import CardNote from '~/components/todoNotes/CardNote';
-import TodoNav from '~/components/todoNotes/nav/TodoNav';
-export default {
-  components: {CardNote, TodoNav,NoteForm},
-  data(){
-    return{
-      showTag:"",
-      allNotes: this.$store.state.helloWorld.notes,
-      formNote: undefined,
-      emptyNoteForAdd:{title: "", text: ""}
+    import NoteForm from '~/components/todoNotes/NoteForm';
+    import CardNote from '~/components/todoNotes/CardNote';
+    import TodoNav from '~/components/todoNotes/nav/TodoNav';
+    export default {
+      components: {CardNote, TodoNav,NoteForm},
+      data(){
+        return{
+          showTag:"",
+          allNotes: this.$store.state.helloWorld.notes,
+          formNote: undefined,
+          emptyNoteForAdd:{title: "", text: ""}
+        }
+      },
+      methods:{
+
+      logger(){
+      console.log(this.showTag);
+      }
+
     }
-  },
-  methods:{
-
-logger(){
-  console.log(this.showTag);
-}
-
   }
-}
 </script>
 
 <style>
-.index-container{
+  .index-container{
 
-  display: flex;
-}
+    display: flex;
+  }
 </style>
