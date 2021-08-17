@@ -52,7 +52,7 @@
 
         deleteNote(){
         
-          this.$store.commit('helloWorld/deleteNote', this.note);
+          this.$store.commit('helloWorld/deleteNote', this.value);
           
         },
 
