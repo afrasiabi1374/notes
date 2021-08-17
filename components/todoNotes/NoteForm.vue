@@ -5,11 +5,21 @@
          <v-text-field v-model="formData.title" />
       </v-card-title>
       <v-textarea   v-model="formData.text" />
+                <v-autocomplete
+                  v-model="tags"
+                  :items="tags"
+                  outlined
+                  dense
+                  chips
+                  small-chips
+                  label="Outlined"
+                  multiple
+               ></v-autocomplete>
       <v-card-actions>
         <v-spacer></v-spacer>
-        <v-btn color="warning" text @click="deleteNote()">delete</v-btn>
-        <v-btn color="primary" text @click="editNote()">update</v-btn>
-        <v-btn color="success" text @click="addNote()">add note</v-btn>
+        <v-btn v-if=" (value.title || value.text )  !=='' "   color="warning" text @click="deleteNote()">delete</v-btn>
+        <v-btn v-if=" (value.title || value.text )  !=='' "   color="primary" text @click="editNote()">update</v-btn>
+        <v-btn v-if=" (value.title || value.text )  ==='' "   color="success" text @click="addNote()">add note</v-btn>
       </v-card-actions>
     </v-card>
   </v-dialog>
@@ -20,6 +30,10 @@
   
     data(){
       return {
+        items: ['foo', 'bar', 'fizz', 'buzz'],
+        values: ['foo', 'bar'],
+        tags:this.$store.state.helloWorld.tags,
+        
         formData:{
           title: '',
           text: '',
@@ -31,6 +45,7 @@
   watch:{
     value(){
       this.formData = this.value? JSON.parse(JSON.stringify(this.value)): {title: '', text: ''}
+      console.log(this.value);
     }
   },
   methods:{

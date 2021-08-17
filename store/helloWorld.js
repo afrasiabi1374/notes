@@ -11,11 +11,11 @@ export const  state = () =>({
    tags:[
        {id:1,name:"never giv up."},
        {id:2,name:"Just do it"},
-       {id:3,name:"Change the world by being yourself."},
-       {id:4,name:"Everything you can imagine is real."},
-       {id:5,name:"Never regret anything that made you smile."},
-       {id:6,name:"Die with memories, not dreams."},
-       {id:7,name:"Aspire to inspire before we expire."},
+       {id:3,name:"strong"},
+       {id:4,name:" imagine"},
+       {id:5,name:"important!"},
+       {id:6,name:"dreams."},
+       {id:7,name:"happy"},
    ]
 
 })
