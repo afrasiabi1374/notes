@@ -20,18 +20,25 @@ export const  state = () =>({
 
 })
 export const mutations = {
-    deleteNote(state,noteIndex){
-   
-             state.notes.splice(noteIndex,1);
-        },
-    updateNote(state,editVal){
-        console.log(editVal.title);
-        state.notes[editVal.id].title = editVal.title;
-        state.notes[editVal.id].text = editVal.text;
+
+    createNote(state,note){
+        let lastElement = state.notes.length;
+        note.id = lastElement+1;
+        state.notes.push(note);
+        
+        console.log(note.id)
+    },
+
+    updateNote(state, note){
+        // console.log(note.text);
+        // console.log(note.title);
+        state.notes[state.notes.findIndex(n => n.id == note.id)].title = note.title
+        state.notes[state.notes.findIndex(n => n.id == note.id)].text = note.text
+    },
+
+    deleteNote(state, note){
+        state.notes.splice(state.notes.findIndex(n => n.id == note.id), 1);
+    },
 
 
-        //    state.notes[1].text = "editVal.text";
-        //    state.notes[1].title = "editVal.title";
-
-    }
 }

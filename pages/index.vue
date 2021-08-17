@@ -1,26 +1,18 @@
 <template>
-<div class="index-container">
+  <div class="index-container">
     <todo-nav></todo-nav>
-  <div style="width:70%">
-    <v-container class="grey lighten-5">
-      <v-row no-gutters>
-        <v-col
-          v-for="(note, index) in allNotes" :key="index"  
-          cols="12"
-          sm="4"
-        >
-          <v-card 
-            class="pa-2"
-            outlined
-            tile 
-            @click="test(note)"
-          >
-            <card-note  :oneNote="note"></card-note>
-          </v-card>
-        </v-col>
-      </v-row>
-    </v-container>
-      <note-form :MyDialog="MyDialog" :noteProp="noteProp"></note-form>
+    <div style="width:70%">
+      <v-container class="grey lighten-5">
+        <v-row no-gutters>
+          <v-col cols="12" sm="4"
+            v-for="(note, index) in allNotes" :key="index" >
+            <card-note :note="note" @click="formNote=note" />
+          </v-col>
+        </v-row>
+        <v-btn  @click="formNote={title: '', text: ''}">new note</v-btn>
+      </v-container >
+      <!-- <note-form v-model="formNopte" :value="formNote" @input="(v) => formNote=v" /> -->
+      <note-form v-model="formNote" />
     </div>
   </div>
 </template>
@@ -33,30 +25,13 @@ export default {
   data(){
     return{
       allNotes: this.$store.state.helloWorld.notes,
-      singleNote:"",
-      MyDialog: false,
-      noteProp: undefined,
-      editTitle: "",
-      editedNote: {
-        id: 1,
-        title: "taghi",
-        text: "taghi nazhad"
-      }
+      formNote: undefined,
+      emptyNoteForAdd:{title: "", text: ""}
     }
   },
   methods:{
-    deleteNote(){
-      this.$store.commit('helloWorld/deleteNote', this.myValueDialog[1])
-    },
-    editNote(){
-      if (this.myValueDialog !== undefined) {
-        this.$store.commit('helloWorld/updateNote', this.myValueDialog[0])
-      }
-    },
-    test(note){
-      this.MyDialog=!this.MyDialog
-      this.noteProp = note
-    }
+
+
   }
 }
 </script>
@@ -64,6 +39,6 @@ export default {
 <style>
 .index-container{
 
-display: flex;
+  display: flex;
 }
 </style>
