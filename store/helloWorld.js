@@ -72,8 +72,36 @@ export const  state = () =>({
             id:7,
             name:"happy"
         },
+    ],
+    colors:[
+        {
+            colorLabel:"khaki",
+            colorVal:"khaki"
+        },
+        {
+            colorLabel:"purple",
+            colorVal:"#9b5de5"
+        },
+        {
+            colorLabel:"pink",
+            colorVal:"#f15bb5"
+        },
+        {
+            colorLabel:"yellow",
+            colorVal:"#fee440"
+        },
+        {
+            colorLabel:"blue",
+            colorVal:"#00bbf9"
+        },
+        {
+            colorLabel:"cyan",
+            colorVal:"#00f5d4"
+        },
+    
     ]
 })
+
 export const mutations = {
     saveNote(state, note){
         note.id?

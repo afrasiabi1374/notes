@@ -16,7 +16,7 @@
         </v-expansion-panel-header>
         <v-expansion-panel-content >
             <v-radio-group v-model="BgColor.background" row  style="display: inline;" >
-              <v-radio v-for="(bg,index) in cardBgColors" :label="bg.colorLabel" :value="bg.colorVal" :key="index"></v-radio>
+              <v-radio  v-for="(bg,index) in bgCards"  :value="bg.colorVal" :key="index" :color="bg.colorVal" :style="{backgroundColor:bg.colorVal,borderRadius:100+'%'}"></v-radio>
             </v-radio-group>
         </v-expansion-panel-content>
       </v-expansion-panel>
@@ -31,16 +31,15 @@
   data(){
     return{
       BgColor:{background:'transparent',margin:'15px'},
-      cardBgColors:[
-        {colorLabel:"khaki",colorVal:"khaki"},
-        {colorLabel:"purple",colorVal:"#9b5de5"},
-        {colorLabel:"pink",colorVal:"#f15bb5"},
-        {colorLabel:"yellow",colorVal:"#fee440"},
-        {colorLabel:"blue",colorVal:"#00bbf9"},
-        {colorLabel:"cyan",colorVal:"#00f5d4"},
-
-      ]
+      bgCards:this.$store.state.helloWorld.colors,
     }
+  },
+  methods:{
+
+    logger(){
+      console.log(this.bgCards);
+    }
+
   }
   }
 </script>
