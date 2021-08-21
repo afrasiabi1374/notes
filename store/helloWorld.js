@@ -99,7 +99,6 @@ export const getters = {
     tagLabel: (state) => (tid) => {
         // console.log('ffffffffff');
         // return tid
-
         // return tid
         return '# '+state.tags.find(t => t.id == tid).name
     }
