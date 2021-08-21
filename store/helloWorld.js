@@ -58,7 +58,7 @@ export const  state = () =>({
         },
         {
             id:4,
-            name:" imagine"
+            name:"imagine"
         },
         {
             id:5,
@@ -89,8 +89,7 @@ export const mutations = {
         // console.log(note.title);
         state.notes[state.notes.findIndex(n => n.id == note.id)].title = note.title
         state.notes[state.notes.findIndex(n => n.id == note.id)].text = note.text
-        state.notes[state.notes.findIndex(n => n.id == note.id)].tagsId=note.tagsId
-        
+        state.notes[state.notes.findIndex(n => n.id == note.id)].tagsId=note.tagId  
     },
 
     deleteNote(state, note){

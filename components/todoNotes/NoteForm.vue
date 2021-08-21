@@ -6,7 +6,7 @@
       </v-card-title>
       <v-textarea     v-model="formData.text"/>
          <v-autocomplete
-           v-model="formData.tagsId"
+           v-model="formData.tagId"
            :items="tags"
            outlined
            dense
@@ -66,6 +66,7 @@
 
     addNote(){
       this.$store.commit('helloWorld/createNote', this.formData)
+      console.log(this.formData.tagId);
     },
 
 
