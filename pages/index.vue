@@ -5,14 +5,24 @@
       <v-container class="grey lighten-5">
         <v-row no-gutters>
           <v-col cols="12" sm="4"
-            v-for="(note, index) in allNotes" :key="index" >
-            <card-note :note="note" @click="formNote=note"  />
+            v-for="(note, index) in allNotes" :key="index">
+            <card-note :note="note" @click="formNote=note"/>
           </v-col>
+          <v-btn
+            class="mx-2 add-btn"
+            fab
+            dark
+            color="indigo"
+            @click="formNote={title: '', text: '', tagsId: []};"
+           
+          >
+            <v-icon dark>mdi-plus</v-icon>
+          </v-btn>
         </v-row>
-        <v-btn  @click="formNote={title: '', text: '', tagsId: []};">new note</v-btn>
       </v-container >
       <!-- <note-form v-model="formNopte" :value="formNote" @input="(v) => formNote=v" /> -->
       <note-form v-model="formNote" />
+
     </div>
   </div>
 </template>
@@ -44,5 +54,12 @@
   .index-container{
 
     display: flex;
+  }
+  .add-btn{
+position: relative;
+top: 14%;
+left: 11%;
+padding: 55px;
+font-size: 2em;
   }
 </style>

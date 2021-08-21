@@ -2,11 +2,11 @@
 <template>
 <div width="25%" >
 
-      <v-app-bar-nav-icon @click="drawer = true" color="primary" ></v-app-bar-nav-icon>
+      <v-app-bar-nav-icon @click="drawer = !drawer" color="primary" ></v-app-bar-nav-icon>
  <v-navigation-drawer hide-overlay 
       v-model="drawer"
       relative
-      temporary
+      
     >
       <v-list
         nav

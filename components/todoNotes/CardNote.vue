@@ -1,5 +1,5 @@
 <template>
-  <v-card class="card" elevation="2" outlined @click="$emit('click')">
+  <v-card class="card" elevation="2" outlined @click.self="$emit('click')" :style="[BgColor]" >
     <h2> {{note.title}} </h2>
     <br>
     <p> {{  note.text.substr(0,21)+'...'}} </p>
@@ -8,11 +8,40 @@
           {{ $store.getters['helloWorld/tagLabel'](t) }}
         </v-chip>
     </div>
+         
+    <v-expansion-panels >
+      <v-expansion-panel > 
+        <v-expansion-panel-header >
+          background-color
+        </v-expansion-panel-header>
+        <v-expansion-panel-content >
+            <v-radio-group v-model="BgColor.background" row  style="display: inline;" >
+              <v-radio v-for="(bg,index) in cardBgColors" :label="bg.colorLabel" :value="bg.colorVal" :key="index"></v-radio>
+            </v-radio-group>
+        </v-expansion-panel-content>
+      </v-expansion-panel>
+    </v-expansion-panels>
+
+
   </v-card>
 </template>
 <script>
   export default {
-  props: ['note']
+  props: ['note'],
+  data(){
+    return{
+      BgColor:{background:'transparent',margin:'15px'},
+      cardBgColors:[
+        {colorLabel:"khaki",colorVal:"khaki"},
+        {colorLabel:"purple",colorVal:"#9b5de5"},
+        {colorLabel:"pink",colorVal:"#f15bb5"},
+        {colorLabel:"yellow",colorVal:"#fee440"},
+        {colorLabel:"blue",colorVal:"#00bbf9"},
+        {colorLabel:"cyan",colorVal:"#00f5d4"},
+
+      ]
+    }
+  }
   }
 </script>
 <style >
