@@ -4,43 +4,43 @@ export const  state = () =>({
             id: 1,
             title: "cleane kitchen",
             text: "you should clean kitchen",
-            tags: [1, 2]
+            tagsId: [1, 2]
         },
         {
             id: 2,
             title: "do home work",
             text: "do math physics and programming with c++",
-            tags: []
+            tagsId: []
         },
         {
             id: 3,
             title: "football playing",
             text: "go to stadium azadi an dplay football",
-            tags: []
+            tagsId: []
         },
         {
             id: 4,
             title: "help to ali",
             text: "goo to his home and help to his parent",
-            tags: []
+            tagsId: []
         },
         {
             id: 5,
             title: "go to gym",
             text: "go to gym and give program ",
-            tags: []
+            tagsId: []
         },
         {
             id: 6,
             title: "english",
             text: "go to english language class",
-            tags: []
+            tagsId: []
         },
         {
             id: 7,
             title: "programming exersize",
             text: "do programming exersise with vue",
-            tags: [3, 2]
+            tagsId: [3, 2]
         },
     ],
     tags:[
@@ -80,8 +80,8 @@ export const mutations = {
         let lastElement = state.notes.length;
         note.id = lastElement+1;
         state.notes.push(note);
-        
-        console.log(note.id)
+        state.notes[state.notes.findIndex(n => n.id == note.id)].tagsId=note.tagId
+        // console.log(note.id)
     },
 
     updateNote(state, note){
@@ -89,6 +89,8 @@ export const mutations = {
         // console.log(note.title);
         state.notes[state.notes.findIndex(n => n.id == note.id)].title = note.title
         state.notes[state.notes.findIndex(n => n.id == note.id)].text = note.text
+        state.notes[state.notes.findIndex(n => n.id == note.id)].tagsId=note.tagsId
+        
     },
 
     deleteNote(state, note){
@@ -100,6 +102,6 @@ export const getters = {
         // console.log('ffffffffff');
         // return tid
         // return tid
-        return '# '+state.tags.find(t => t.id == tid).name
+        return '# '+state.tags.find(t => t.id == tid).name;
     }
 }

@@ -2,11 +2,11 @@
   <v-dialog :value="value" width="600px">
     <v-card v-if="value">
       <v-card-title>
-         <v-text-field v-model="formData.title"/>
+        <v-text-field v-model="formData.title"/>
       </v-card-title>
-      <v-textarea   v-model="formData.text"/>
+      <v-textarea     v-model="formData.text"/>
          <v-autocomplete
-           v-model="items"
+           v-model="formData.tagsId"
            :items="tags"
            outlined
            dense
@@ -15,7 +15,8 @@
            label="Outlined"
            multiple
            item-text="name"
-           @change="$emit('changeTags',items)"
+           item-value="id"
+           
         ></v-autocomplete>
       <v-card-actions>
         <v-spacer></v-spacer>
@@ -38,7 +39,8 @@
         formData:{
           title: '',
           text: '',
-          id:''
+          id:'',
+          tagId:[]
         },
       
       }
@@ -64,7 +66,8 @@
 
     addNote(){
       this.$store.commit('helloWorld/createNote', this.formData)
-    }
+    },
+
 
   },
   computed:{

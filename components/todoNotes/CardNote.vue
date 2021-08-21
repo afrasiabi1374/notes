@@ -4,7 +4,7 @@
     <br>
     <p> {{  note.text.substr(0,21)+'...'}} </p>
     <div class="container">
-        <v-chip v-for="t in note.tags" :key="t" class="ma-2" x-small>
+        <v-chip v-for="t in note.tagsId" :key="t" class="ma-2" x-small>
           {{ $store.getters['helloWorld/tagLabel'](t) }}
         </v-chip>
     </div>
@@ -12,7 +12,7 @@
 </template>
 <script>
   export default {
-  props: ['note','tags']
+  props: ['note']
   }
 </script>
 <style >
