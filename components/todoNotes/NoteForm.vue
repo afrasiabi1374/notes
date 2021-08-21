@@ -6,7 +6,7 @@
       </v-card-title>
       <v-textarea     v-model="formData.text"/>
          <v-autocomplete
-           v-model="formData.tagId"
+           v-model="formData.tagsId"
            :items="tags"
            outlined
            dense
@@ -21,8 +21,7 @@
       <v-card-actions>
         <v-spacer></v-spacer>
         <v-btn v-if=" (value.title || value.text )  !=='' "   color="warning" text @click="deleteNote()">delete</v-btn>
-        <v-btn v-if=" (value.title || value.text )  !=='' "   color="primary" text @click="editNote()">update</v-btn>
-        <v-btn v-if=" (value.title || value.text )  ==='' "   color="success" text @click="addNote()">add note</v-btn>
+        <v-btn color="primary" text @click="saveNote()">save</v-btn>
       </v-card-actions>
     </v-card>
   </v-dialog>
@@ -40,14 +39,14 @@
           title: '',
           text: '',
           id:'',
-          tagId:[]
+          tagsId:[]
         },
       
       }
     },
   watch:{
     value(){
-      this.formData = this.value? JSON.parse(JSON.stringify(this.value)):{title: '', text: ''}
+      this.formData = this.value? JSON.parse(JSON.stringify(this.value)): {title: '', text: '', tagsId: []}
     }
   },
   methods:{
@@ -57,19 +56,10 @@
     deleteNote(){
       this.$store.commit('helloWorld/deleteNote', this.value);
     },
-
-    editNote(){
-      this.$store.commit('helloWorld/updateNote', this.formData)
+    saveNote(){
+      this.$store.commit('helloWorld/saveNote', this.formData)
       this.$emit('input', undefined);
-      // this.note = undefined
-    },
-
-    addNote(){
-      this.$store.commit('helloWorld/createNote', this.formData)
-      console.log(this.formData.tagId);
-    },
-
-
+    }
   },
   computed:{
     // computedTags(){

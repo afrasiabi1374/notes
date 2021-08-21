@@ -4,7 +4,7 @@ export const  state = () =>({
             id: 1,
             title: "cleane kitchen",
             text: "you should clean kitchen",
-            tagsId: [1, 2]
+            tagsId: [2, 5, 7]
         },
         {
             id: 2,
@@ -40,7 +40,7 @@ export const  state = () =>({
             id: 7,
             title: "programming exersize",
             text: "do programming exersise with vue",
-            tagsId: [3, 2]
+            tagsId: []
         },
     ],
     tags:[
@@ -66,7 +66,7 @@ export const  state = () =>({
         },
         {
             id:6,
-            name:"dreams."
+            name:"dreams"
         },
         {
             id:7,
@@ -75,23 +75,11 @@ export const  state = () =>({
     ]
 })
 export const mutations = {
-
-    createNote(state,note){
-        let lastElement = state.notes.length;
-        note.id = lastElement+1;
-        state.notes.push(note);
-        state.notes[state.notes.findIndex(n => n.id == note.id)].tagsId=note.tagId
-        // console.log(note.id)
+    saveNote(state, note){
+        note.id?
+            state.notes[state.notes.findIndex(n => n.id == note.id)] = note:
+            state.notes.push({...note, id: 1 + state.notes.length});
     },
-
-    updateNote(state, note){
-        // console.log(note.text);
-        // console.log(note.title);
-        state.notes[state.notes.findIndex(n => n.id == note.id)].title = note.title
-        state.notes[state.notes.findIndex(n => n.id == note.id)].text = note.text
-        state.notes[state.notes.findIndex(n => n.id == note.id)].tagsId=note.tagId  
-    },
-
     deleteNote(state, note){
         state.notes.splice(state.notes.findIndex(n => n.id == note.id), 1);
     },

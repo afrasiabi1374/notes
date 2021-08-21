@@ -9,7 +9,7 @@
             <card-note :note="note" @click="formNote=note"  />
           </v-col>
         </v-row>
-        <v-btn  @click="formNote={title: '', text: ''};">new note</v-btn>
+        <v-btn  @click="formNote={title: '', text: '', tagsId: []};">new note</v-btn>
       </v-container >
       <!-- <note-form v-model="formNopte" :value="formNote" @input="(v) => formNote=v" /> -->
       <note-form v-model="formNote" />
