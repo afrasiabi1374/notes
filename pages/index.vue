@@ -1,9 +1,31 @@
 <template>
   <div class="index-container">
-    <todo-nav></todo-nav>
+    <div width="25%" style="position:relative">
+      <v-app-bar-nav-icon @click="drawer = !drawer" color="primary" ></v-app-bar-nav-icon>
+      <v-navigation-drawer hide-overlay 
+        v-model="drawer"
+        relative
+      >
+        <v-list nav dense>
+          <v-list-item-group
+            v-model="group"
+            active-class="deep-purple--text text--accent-4"
+          >
+            <v-list-item v-for="(tagItem,index) in menuTags" :key="index" >
+              <v-list-item-title>
+                <nuxt-link :to="'/' + `${tagItem.id}`" class="app-bar-link-item" >{{tagItem.name}} </nuxt-link>
+              </v-list-item-title>
+            </v-list-item>
+          </v-list-item-group>
+      </v-list>
+    </v-navigation-drawer>
+  
+</div>
     <div style="width:70%">
+
       <v-container class="grey lighten-5">
-        <v-row no-gutters>
+              
+        <v-row no-gutters style="">
           <v-col cols="12" sm="4"
             v-for="(note, index) in allNotes" :key="index">
             <card-note :note="note" @click="formNote=note"/>
@@ -37,7 +59,10 @@
           
           allNotes: this.$store.state.helloWorld.notes,
           formNote: undefined,
-          emptyNoteForAdd:{title: "", text: ""}
+          emptyNoteForAdd:{title: "", text: ""},
+          drawer: true,
+          group: null,
+          menuTags:this.$store.state.helloWorld.tags
         }
       },
       methods:{

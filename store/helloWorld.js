@@ -10,13 +10,13 @@ export const  state = () =>({
             id: 2,
             title: "do home work",
             text: "do math physics and programming with c++",
-            tagsId: []
+            tagsId: [2]
         },
         {
             id: 3,
             title: "football playing",
             text: "go to stadium azadi an dplay football",
-            tagsId: []
+            tagsId: [2]
         },
         {
             id: 4,
@@ -28,7 +28,7 @@ export const  state = () =>({
             id: 5,
             title: "go to gym",
             text: "go to gym and give program ",
-            tagsId: []
+            tagsId: [6]
         },
         {
             id: 6,
@@ -111,6 +111,7 @@ export const mutations = {
     deleteNote(state, note){
         state.notes.splice(state.notes.findIndex(n => n.id == note.id), 1);
     },
+
 }
 export const getters = {
     tagLabel: (state) => (tid) => {
@@ -118,5 +119,15 @@ export const getters = {
         // return tid
         // return tid
         return '# '+state.tags.find(t => t.id == tid).name;
+    },
+
+    notesByTag:(state) => (tagID) => {
+        // console.log('dddddddddddd', parseInt(tagID);
+        // tagID = parseInt(tagID)
+        // console.log(state.notes.filter(note=>note.tagsId == tagID));
+        // state.notes.filter(note => console.log(note.tagsId.includes(0+tagID)) )
+        // console.log('ddddddddd', tagID, state.notes.filter(note => note.tagsId.includes(tagID) ));
+        return state.notes.filter(note => note.tagsId.includes(parseInt(tagID)) )
     }
+
 }
