@@ -1,10 +1,22 @@
 <template>
-    <v-row no-gutters style="">
-        <v-col cols="12" sm="4"
-            v-for="(note, index) in notesOfTag" :key="index">
-            <card-note :note="note" @click="formNote=note"/>
+    <div>
+        <h3>unarchived</h3>
+        <v-row no-gutters style="">
+            <v-col cols="12" sm="4"
+                v-for="(note, index) in notesOfTag" :key="index">
+                <card-note  v-if="note.archived === false" :note="note" @click="formNote=note"/>
+            </v-col>
+        </v-row>
+        <h3>archived</h3>
+        <v-row no-gutters style="">
+            <v-col cols="12" sm="4" v-for="(note, index) in notesOfTag" :key="index">
+            <card-note  v-if="note.archived === true" :note="note" @click="formNote=note"/>
         </v-col>
-    </v-row>
+        </v-row>
+
+    </div>
+
+
 </template>
 
 <script>

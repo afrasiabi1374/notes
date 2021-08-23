@@ -1,5 +1,5 @@
 <template>
-  <v-card  class="card" elevation="2" outlined @click.self="$emit('click')" :style="[BgColor]" >
+  <v-card  class="card" elevation="5" outlined @click.self="$emit('click')" :style="[BgColor]" >
     <h2> {{note.title}} </h2>
     <br>
     <p> {{  note.text.substr(0,21)+'...'}} </p>
@@ -17,8 +17,10 @@
             <span class="tool-tip"><small>colors</small></span> 
       </li>
       <li class="item-hover">
-        <v-icon id="archive-hover" class="item-hover" small>mdi-package-down</v-icon>
-        <span class="tool-tip"><small>Archive</small></span> 
+        <v-icon @click="idToArchiver" id="archive-hover" class="item-hover" small>mdi-package-down</v-icon>
+        <span class="tool-tip" >
+          <small >Archive</small>
+        </span> 
       </li>
     </ul>
 
@@ -36,7 +38,14 @@
   methods:{
 
     logger(){
-      console.log(this.bgCards);
+      console.log(this.note.id);
+    },
+
+    idToArchiver(){
+       this.$store.commit('helloWorld/archiver', this.note.id)
+      // this.$emit('click')
+      console.log(this.note.id);
+
     }
 
   }
