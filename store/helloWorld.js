@@ -99,6 +99,30 @@ export const  state = () =>({
             colorLabel:"cyan",
             colorVal:"#00f5d4"
         },
+        {
+            colorLabel:"holo",
+            colorVal:"#e75874"
+        },
+        {
+            colorLabel:"soorati-kamrang",
+            colorVal:"#fbcbc9 "
+        },
+        {
+            colorLabel:"orange",
+            colorVal:"#d2601a"
+        },
+        {
+            colorLabel:"flamingo",
+            colorVal:"#ed3572"
+        },
+        {
+            colorLabel:"zeytooni",
+            colorVal:"#829079"
+        },
+        {
+            colorLabel:"firooze2",
+            colorVal:"#1fbfb8"
+        },
     
     ]
 })
