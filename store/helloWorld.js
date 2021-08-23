@@ -1,3 +1,4 @@
+
 export const  state = () =>({
     notes:[
         {
@@ -107,9 +108,10 @@ export const mutations = {
         note.id?
             state.notes[state.notes.findIndex(n => n.id == note.id)] = note:
             state.notes.push({...note, id: 1 + state.notes.length});
-    },
+        },
     deleteNote(state, note){
         state.notes.splice(state.notes.findIndex(n => n.id == note.id), 1);
+
     },
 
 }
@@ -119,6 +121,7 @@ export const getters = {
         // return tid
         // return tid
         return '# '+state.tags.find(t => t.id == tid).name;
+
     },
 
     notesByTag:(state) => (tagID) => {
