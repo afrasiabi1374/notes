@@ -11,11 +11,9 @@
     <ul class="card-buttom-nav">
       <li id="color-hover" class="item-hover">
         <v-icon small>mdi-palette</v-icon>
-            
               <v-radio-group class="color-container" v-model="BgColor.background" row   >
               <v-radio  small  class="color-item"  v-for="(bg,index) in bgCards"  :value="bg.colorVal" :key="index" :color="bg.colorVal" :style="{backgroundColor:bg.colorVal}" off-icon></v-radio>
               </v-radio-group>
-      
             <span class="tool-tip"><small>colors</small></span> 
       </li>
       <li class="item-hover">

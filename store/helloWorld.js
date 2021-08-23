@@ -1,47 +1,53 @@
-
 export const  state = () =>({
     notes:[
         {
             id: 1,
             title: "cleane kitchen",
             text: "you should clean kitchen",
-            tagsId: [2, 5, 7]
+            tagsId: [2, 5, 7],
+            archived:false
         },
         {
             id: 2,
             title: "do home work",
             text: "do math physics and programming with c++",
-            tagsId: [2]
+            tagsId: [2],
+            archived:false
         },
         {
             id: 3,
             title: "football playing",
             text: "go to stadium azadi an dplay football",
-            tagsId: [2]
+            tagsId: [2],
+            archived:false
         },
         {
             id: 4,
             title: "help to ali",
             text: "goo to his home and help to his parent",
-            tagsId: []
+            tagsId: [],
+            archived:false
         },
         {
             id: 5,
             title: "go to gym",
             text: "go to gym and give program ",
-            tagsId: [6]
+            tagsId: [6],
+            archived:false
         },
         {
             id: 6,
             title: "english",
             text: "go to english language class",
-            tagsId: []
+            tagsId: [],
+            archived:false
         },
         {
             id: 7,
             title: "programming exersize",
             text: "do programming exersise with vue",
-            tagsId: []
+            tagsId: [],
+            archived:false
         },
     ],
     tags:[
