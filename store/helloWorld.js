@@ -82,8 +82,8 @@ export const  state = () =>({
     ],
     colors:[
         {
-            colorLabel:"khaki",
-            colorVal:"khaki"
+            colorLabel:"white",
+            colorVal:"white"
         },
         {
             colorLabel:"purple",

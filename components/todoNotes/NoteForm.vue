@@ -16,7 +16,6 @@
            multiple
            item-text="name"
            item-value="id"
-           
         ></v-autocomplete>
       <v-card-actions>
         <v-spacer></v-spacer>

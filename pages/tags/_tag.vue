@@ -1,19 +1,22 @@
 <template>
-    <div>
+    <div  class="container-ar" >
         <h3>unarchived</h3>
-        <v-row no-gutters style="">
-            <v-col cols="12" sm="4"
-                v-for="(note, index) in notesOfTag" :key="index">
-                <card-note  v-if="note.archived === false" :note="note" @click="formNote=note"/>
-            </v-col>
-        </v-row>
-        <h3>archived</h3>
-        <v-row no-gutters style="">
-            <v-col cols="12" sm="4" v-for="(note, index) in notesOfTag" :key="index">
-            <card-note  v-if="note.archived === true" :note="note" @click="formNote=note"/>
-        </v-col>
+        <v-row class="unarchived">
+            <template v-for="(note, index) in notesOfTag" >
+                <v-col v-if="note.archived === false" cols="12" sm="3" :key="index"  >
+                    <card-note   :note="note" @click="formNote=note"/>
+                </v-col>
+            </template>
         </v-row>
 
+        <h3>archived</h3>
+        <v-row class="archived">
+            <template v-for="(note, index) in notesOfTag" >
+                <v-col v-if="note.archived === true" cols="12" sm="3" :key="index"  >
+                    <card-note   :note="note" @click="formNote=note"/>
+                </v-col>
+            </template>
+        </v-row>
     </div>
 
 
@@ -33,11 +36,16 @@ export default {
             this.notesOfTag=this.$store.getters['helloWorld/notesByTag'](this.tagParam)
 
         },
-
-
 }
 </script>
 
 <style>
-
+.unarchived,.archived{
+    min-height: 80vh;
+}
+.container-ar{
+    min-width: 100%;
+    display: flex;
+    flex-direction: column;
+}
 </style>

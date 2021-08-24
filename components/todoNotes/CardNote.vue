@@ -12,7 +12,7 @@
       <li id="color-hover" class="item-hover">
         <v-icon small>mdi-palette</v-icon>
               <v-radio-group class="color-container" v-model="BgColor.background" row   >
-              <v-radio  small  class="color-item"  v-for="(bg,index) in bgCards"  :value="bg.colorVal" :key="index" :color="bg.colorVal" :style="{backgroundColor:bg.colorVal}" off-icon></v-radio>
+              <v-radio  class="color-item"  v-for="(bg,index) in bgCards"  :value="bg.colorVal" :key="index" :color="bg.colorVal" :style="{backgroundColor:bg.colorVal}" off-icon></v-radio>
               </v-radio-group>
             <span class="tool-tip"><small>colors</small></span> 
       </li>
@@ -79,19 +79,36 @@
   
   .color-container{
     background-color: aliceblue;
+    height: 100px;
     border-radius:4px;
     display: none;
-    width: 40%;
+    width: 180px;
     position: absolute;
-    top: 20%;
+    top:22%;
     z-index: 2;
+  
   }
   .color-item{
-    width: 20%;
-    display: flex;
-    padding-right: 22px;
-    border-radius: 100%;
+    transition: all 1s;
+    width: 26px;
     margin: auto;
+    padding-right: 5px;
+    border-radius: 100%;
+    margin-top: 3px;
+    height: 15%;
+    border: 2px solid rgb(190, 190, 190);
+  }
+  /* .color-item:nth-child(-n+4){
+    margin-top: 6px;
+  } */
+  .color-item:nth-child(1){
+    margin-left: 10px;
+  }
+  .color-item:nth-child(5){
+    margin-left: 10px;
+  }
+  .color-item:nth-child(9){
+    margin-left: 10px;
   }
   .tool-tip{
     display: none;
@@ -105,10 +122,16 @@
   }
   /* hovers */
   #color-hover:hover .color-container{
-  display: flex;
+    transition: all 1s;
+    display:flex;
+  }
+  #color-hover:hover .color-container .color-item:hover{
+    transition: all 1s;
+    border: 2px solid black;
   }
   .item-hover:hover .tool-tip{
     display: flex;
+    
   }
    /* end hovers */
 </style>

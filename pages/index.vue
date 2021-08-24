@@ -2,10 +2,12 @@
     <div style="width:70%">
       <v-container class="grey lighten-5">
         <v-row no-gutters style="">
-          <v-col cols="12" sm="4" 
-            v-for="(note, index) in allNotes" :key="index">
-            <card-note v-if="note.archived === false" :note="note" @click="formNote=note"/>
-          </v-col>
+          <template v-for="(note, index) in allNotes" >
+            <v-col v-if="note.archived === false" cols="12" sm="4" :key="index" >
+              <card-note  :note="note" @click="formNote=note"/>
+            </v-col>
+          </template>
+
           <v-btn
             class="mx-2 add-btn"
             fab
@@ -13,7 +15,7 @@
             color="teal"
             @click="formNote={title: '', text: '', tagsId: []};"
           >
-            <v-icon dark>mdi-plus</v-icon>
+            <v-icon dark>mdi-pen-plus</v-icon>
           </v-btn>
         </v-row>
       </v-container >
