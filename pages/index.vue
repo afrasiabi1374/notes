@@ -33,6 +33,7 @@
           // allNotes: this.$store.getters['helloWorld/showUnarchived'],
           formNote: undefined,
           emptyNoteForAdd:{title: "", text: ""},
+          
         }
       },
       // watch:{

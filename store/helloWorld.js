@@ -138,7 +138,7 @@ export const mutations = {
         note.id?
             state.notes[state.notes.findIndex(n => n.id == note.id)] = note:
             state.notes.push({...note, id: 1 + state.notes.length,archived:false});
-        },
+    },
     deleteNote(state, note){
         state.notes.splice(state.notes.findIndex(n => n.id == note.id), 1);
 
@@ -175,6 +175,7 @@ export const getters = {
         return state.notes.filter( note => {
             return note.archived === archive && (tagId? note.tagsId.includes(parseInt(tagId)): true)
         })
-    }
+    },
+
 
 }
