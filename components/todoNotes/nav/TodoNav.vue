@@ -3,7 +3,6 @@
     <div  class="nav-bar" >
       <v-app-bar-nav-icon  @click="drawer = !drawer"  color="primary" ></v-app-bar-nav-icon>
       <v-navigation-drawer
-        
         hide-overlay 
         v-model="drawer"
         expand-on-hover

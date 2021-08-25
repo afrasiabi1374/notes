@@ -171,7 +171,6 @@ export const getters = {
         return state.notes.filter(note=>note.archived === false)
     },
 
-
     archivedOrUnarchivedNotes:(state) => (archive, tagId = null) => {
         return state.notes.filter( note => {
             return note.archived === archive && (tagId? note.tagsId.includes(parseInt(tagId)): true)

@@ -13,7 +13,7 @@
             color="teal"
             @click="formNote={title: '', text: '', tagsId: []};"
           >
-            <v-icon dark>mdi-pen-plus</v-icon>
+            <v-icon style="font-size: 2em;">mdi-pen-plus</v-icon>
           </v-btn>
         </v-row>
       <!-- <note-form v-model="formNopte" :value="formNote" @input="(v) => formNote=v" /> -->
@@ -62,13 +62,15 @@
 <style>
   .add-btn{
     position: relative;
-    top: 14%;
+    margin-top: 6%;
     left: 11%;
     padding: 55px;
-    font-size: 2em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   } 
 .main-content{
   width: 70%;
-
+  margin: auto;
 }
 </style>

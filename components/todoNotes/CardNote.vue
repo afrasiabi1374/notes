@@ -53,17 +53,14 @@
   }
 </script>
 <style >
+
   .card{
  
       padding: 30px;
       margin-bottom: 10px;
       transition: all 1s;
   }
-  .card:hover{
-      background-color: rgba(62, 178, 171, 0.493);
-      transition: all 1s;
-      cursor: pointer;
-  }
+
   .container{
     display: flex;
   }
@@ -73,20 +70,24 @@
   .card-buttom-nav{
     display: flex;
     list-style-type: none;
+    opacity: 0;
+    transition: all 1.2s;
   }
   .color-hover{
     position: relative;
   }
   
-  .color-container{
+ #color-hover .color-container{
     background-color: aliceblue;
     height: 100px;
     border-radius:4px;
-    display: none;
+    display:flex;
     width: 180px;
     position: absolute;
     top:22%;
     z-index: 2;
+    opacity: 0;
+    transition: all 1.2s;
   
   }
   .color-item{
@@ -122,9 +123,18 @@
     transition-delay: 1s;
   }
   /* hovers */
-  #color-hover:hover .color-container{
-    transition: all 1s;
-    display:flex;
+  .card:hover{
+      cursor: pointer;
+  }
+  .card:hover .card-buttom-nav{
+    transition: all 1.2s;
+    opacity: 1;
+   
+  }
+ #color-hover:hover .color-container {
+    transition: all 1.2s;
+    opacity: 1;
+    
   }
   #color-hover:hover .color-container .color-item:hover{
     transition: all 1s;
