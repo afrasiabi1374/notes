@@ -129,23 +129,19 @@ export const  state = () =>({
             colorLabel:"firooze2",
             colorVal:"#1fbfb8"
         },
-    
     ]
 })
-
 export const mutations = {
     saveNote(state, note){
         note.id?
-            state.notes[state.notes.findIndex(n => n.id == note.id)] = note:
-            state.notes.push({...note, id: 1 + state.notes.length,archived:false});
+        state.notes[state.notes.findIndex(n => n.id == note.id)] = note:
+        state.notes.push({...note, id: 1 + state.notes.length,archived:false});
     },
     deleteNote(state, note){
         state.notes.splice(state.notes.findIndex(n => n.id == note.id), 1);
-
     },
     archiver(state,noteId){
        console.log(state.notes.find(note=>note.id==noteId).archived = !state.notes.find(note=>note.id==noteId).archived);
-        
     }
 
 }

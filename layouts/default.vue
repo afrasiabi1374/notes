@@ -1,6 +1,6 @@
 <template>
   <v-app>
-<tool-bar></tool-bar>
+    <tool-bar></tool-bar>
     <div class="index-container">
       <todo-nav></todo-nav>
       <nuxt/>

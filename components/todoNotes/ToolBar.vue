@@ -38,7 +38,6 @@
       search (val) {
         val && val !== this.select && this.querySelections(val)
       },
-
     },
     methods: {
       querySelections (v) {
