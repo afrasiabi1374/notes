@@ -45,6 +45,7 @@
        this.$store.commit('helloWorld/archiver', this.note.id)
       // this.$emit('click')
       console.log(this.note.id);
+      console.log(this.$store.getters['helloWorld/showUnarchived']);
 
     }
 

@@ -1,13 +1,11 @@
 <template>
-    <div style="width:70%">
-      <v-container class="grey lighten-5">
+    <div class="main-content">
         <v-row no-gutters style="">
-          <template v-for="(note, index) in allNotes" >
-            <v-col v-if="note.archived === false" cols="12" sm="4" :key="index" >
+          <template v-for="(note, index) in filterNotes" >
+            <v-col  cols="12" sm="4" :key="index" >
               <card-note  :note="note" @click="formNote=note"/>
             </v-col>
           </template>
-
           <v-btn
             class="mx-2 add-btn"
             fab
@@ -18,12 +16,9 @@
             <v-icon dark>mdi-pen-plus</v-icon>
           </v-btn>
         </v-row>
-      </v-container >
       <!-- <note-form v-model="formNopte" :value="formNote" @input="(v) => formNote=v" /> -->
       <note-form v-model="formNote" />
-
     </div>
- 
 </template>
 <script>
     import NoteForm from '~/components/todoNotes/NoteForm';
@@ -35,15 +30,32 @@
   
       data(){
         return{     
-          allNotes: this.$store.state.helloWorld.notes,
+          // allNotes: this.$store.getters['helloWorld/showUnarchived'],
           formNote: undefined,
           emptyNoteForAdd:{title: "", text: ""},
         }
+      },
+      // watch:{
+      //   allNotes(val){
+      //    //  this.allNotes =   this.$store.getters['helloWorld/showUnarchived'];
+      //     console.log("this is from watcher  : ",val);
+      //   }
+      // },
+      computed:{
+        // allUnarchiveNotes(){
+        //   return this.$store.getters['helloWorld/showUnarchived']
+        // }
+        filterNotes(){
+          return this.$store.getters['helloWorld/archivedOrUnarchivedNotes'](false)
+        }  
       },
       methods:{
       logger(){
       console.log(this.showTag);
       }
+    },
+    created(){
+      
     }
   }
 </script>
@@ -55,8 +67,8 @@
     padding: 55px;
     font-size: 2em;
   } 
-  .nav-bar{
-    width: 25%;
-    min-height: 100%;
-  }
+.main-content{
+  width: 70%;
+
+}
 </style>

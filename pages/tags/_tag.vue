@@ -2,7 +2,7 @@
     <div  class="container-ar" >
         <h3>unarchived</h3>
         <v-row class="unarchived">
-            <template v-for="(note, index) in notesOfTag" >
+            <template v-for="(note, index) in filterNotesUnarchive" >
                 <v-col v-if="note.archived === false" cols="12" sm="3" :key="index"  >
                     <card-note   :note="note" @click="formNote=note"/>
                 </v-col>
@@ -11,7 +11,7 @@
 
         <h3>archived</h3>
         <v-row class="archived">
-            <template v-for="(note, index) in notesOfTag" >
+            <template v-for="(note, index) in filterNotesArchive" >
                 <v-col v-if="note.archived === true" cols="12" sm="3" :key="index"  >
                     <card-note   :note="note" @click="formNote=note"/>
                 </v-col>
@@ -32,10 +32,18 @@ export default {
             notesOfTag:undefined
         }
     },
-        created(){
-            this.notesOfTag=this.$store.getters['helloWorld/notesByTag'](this.tagParam)
-
-        },
+    created(){
+        this.notesOfTag=this.$store.getters['helloWorld/notesByTag'](this.tagParam)
+            
+    },
+    computed:{
+        filterNotesUnarchive(){
+          return this.$store.getters['helloWorld/archivedOrUnarchivedNotes'](false, this.tagParam)
+        },  
+        filterNotesArchive(){
+          return this.$store.getters['helloWorld/archivedOrUnarchivedNotes'](true, this.tagParam)
+        },  
+    }
 }
 </script>
 

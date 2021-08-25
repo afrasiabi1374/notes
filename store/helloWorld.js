@@ -144,8 +144,8 @@ export const mutations = {
 
     },
     archiver(state,noteId){
-       
-        console.log(state.notes.find(note=>note.id==noteId).archived = !state.notes.find(note=>note.id==noteId).archived);
+       console.log(state.notes.find(note=>note.id==noteId).archived = !state.notes.find(note=>note.id==noteId).archived);
+        
     }
 
 }
@@ -165,6 +165,17 @@ export const getters = {
         // state.notes.filter(note => console.log(note.tagsId.includes(0+tagID)) )
         // console.log('ddddddddd', tagID, state.notes.filter(note => note.tagsId.includes(tagID) ));
         return state.notes.filter(note => note.tagsId.includes(parseInt(tagID)) )
+    },
+
+    showUnarchived:(state)=>{
+        return state.notes.filter(note=>note.archived === false)
+    },
+
+
+    archivedOrUnarchivedNotes:(state) => (archive, tagId = null) => {
+        return state.notes.filter( note => {
+            return note.archived === archive && (tagId? note.tagsId.includes(parseInt(tagId)): true)
+        })
     }
 
 }
