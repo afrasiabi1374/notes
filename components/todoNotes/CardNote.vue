@@ -11,8 +11,12 @@
     <ul class="card-buttom-nav">
       <li id="color-hover" class="item-hover">
         <v-icon small>mdi-palette</v-icon>
-              <v-radio-group class="color-container" v-model="BgColor.background" row   >
-              <v-radio  class="color-item"  v-for="(bg,index) in bgCards"  :value="bg.colorVal" :key="index" :color="bg.colorVal" :style="{backgroundColor:bg.colorVal}" off-icon></v-radio>
+              <v-radio-group class="color-container" v-model="BgColor.background" row    >
+              <v-radio   class="color-item"  v-for="(bg,index) in bgCards"  :value="bg.colorVal" :key="index" :color="bg.colorVal" :style="{backgroundColor:bg.colorVal}" off-icon  >
+                <template slot="label">
+                  <span  class="tool-tip-color-name"><small>{{bg.colorLabel}}</small></span> 
+                </template>
+              </v-radio>
               </v-radio-group>
             <span class="tool-tip"><small>colors</small></span> 
       </li>
@@ -70,6 +74,7 @@
   .card-buttom-nav{
     display: flex;
     list-style-type: none;
+    visibility: hidden;
     opacity: 0;
     transition: all 1.2s;
   }
@@ -77,17 +82,15 @@
     position: relative;
   }
   
- #color-hover .color-container{
+  .color-container{
     background-color: aliceblue;
     height: 100px;
     border-radius:4px;
-    display:flex;
+    display: none;
     width: 180px;
     position: absolute;
     top:22%;
     z-index: 2;
-    opacity: 0;
-    transition: all 1.2s;
   
   }
   .color-item{
@@ -122,19 +125,36 @@
     border-radius: 5px;
     transition-delay: 1s;
   }
+   .tool-tip-color-name{
+    position: absolute;
+    opacity: 0;
+    background-color: #5f6061;
+    padding: 3px 15px;
+    color: white;
+    border-radius: 5px; 
+    position: absolute;
+    
+    top: 200%;
+    right: 100%;
+   
+    
+  }
   /* hovers */
+  .color-item:hover .tool-tip-color-name{
+    opacity: 1;
+    z-index: 2;
+  }
   .card:hover{
       cursor: pointer;
   }
   .card:hover .card-buttom-nav{
     transition: all 1.2s;
     opacity: 1;
-   
+    visibility: visible;
   }
- #color-hover:hover .color-container {
-    transition: all 1.2s;
-    opacity: 1;
-    
+  #color-hover:hover .color-container{
+    transition: all 1s;
+    display:flex;
   }
   #color-hover:hover .color-container .color-item:hover{
     transition: all 1s;

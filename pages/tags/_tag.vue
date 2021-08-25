@@ -3,7 +3,7 @@
         <h3>unarchived</h3>
         <v-row class="unarchived">
             <template v-for="(note, index) in filterNotesUnarchive" >
-                <v-col v-if="note.archived === false" cols="12" sm="3" :key="index"  >
+                <v-col v-if="note.archived === false" cols="12" sm="4" :key="index"  >
                     <card-note   :note="note" @click="formNote=note"/>
                 </v-col>
             </template>
@@ -12,7 +12,7 @@
         <h3>archived</h3>
         <v-row class="archived">
             <template v-for="(note, index) in filterNotesArchive" >
-                <v-col v-if="note.archived === true" cols="12" sm="3" :key="index"  >
+                <v-col v-if="note.archived === true" cols="12" sm="4" :key="index"  >
                     <card-note   :note="note" @click="formNote=note"/>
                 </v-col>
             </template>
@@ -48,12 +48,13 @@ export default {
 </script>
 
 <style>
+.container-ar{
+  width: 70%;
+  margin: auto;
+    
+}
 .unarchived,.archived{
     min-height: 80vh;
 }
-.container-ar{
-    min-width: 100%;
-    display: flex;
-    flex-direction: column;
-}
+
 </style>

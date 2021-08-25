@@ -110,7 +110,7 @@ export const  state = () =>({
             colorVal:"#e75874"
         },
         {
-            colorLabel:"soorati-kamrang",
+            colorLabel:"lightPink",
             colorVal:"#fbcbc9 "
         },
         {

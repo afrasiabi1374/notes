@@ -2,7 +2,7 @@
   <v-app>
     <div class="index-container">
       <todo-nav></todo-nav>
-      <nuxt />
+      <nuxt/>
     </div>   
   </v-app>
 </template>
