@@ -2,7 +2,7 @@
     <div class="main-content">
         <v-row no-gutters style="">
           <template v-for="(note, index) in filterNotes" >
-            <v-col  cols="12" sm="4" :key="index" >
+            <v-col  cols="12" md="4" :key="index" >
               <card-note  :note="note" @click="formNote=note"/>
             </v-col>
           </template>
@@ -18,7 +18,7 @@
         </v-row>
       <!-- <note-form v-model="formNopte" :value="formNote" @input="(v) => formNote=v" /> -->
       <note-form v-model="formNote" />
-    </div>
+  </div>
 </template>
 <script>
     import NoteForm from '~/components/todoNotes/NoteForm';

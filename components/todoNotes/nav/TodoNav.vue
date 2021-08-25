@@ -1,8 +1,9 @@
 <!-- <v-btn color="teal" dark @click.stop="drawer = !drawer" :class="$vuetify.breakpoint.mdAndUp ?'nav-sandwich-btn-hide':''"> menu </v-btn> -->
 <template>
-<div>
     <div  class="nav-bar" >
+      <div style="display:flex">
         <v-app-bar-nav-icon  @click="drawer = !drawer"  color="primary" ></v-app-bar-nav-icon>
+      </div>
       <v-navigation-drawer
         hide-overlay 
         v-model="drawer"
@@ -10,9 +11,7 @@
         class="sandwich"
         append
         light
-        mini-variant
-        
-      >
+        mini-variant>
         <v-list nav dense>
           <v-list-item-group
             v-model="group"
@@ -20,7 +19,7 @@
             
           >
             <v-list-item  >
-             <v-list-item-title>
+              <v-list-item-title>
                 <nuxt-link to="/" class="app-bar-link-item" ><v-icon color="blue">mdi-home</v-icon></nuxt-link>
               </v-list-item-title>
             </v-list-item>
@@ -33,7 +32,8 @@
           </v-list-item-group>
       </v-list>
     </v-navigation-drawer>
-  </div> 
+  
+  
 </div>
 </template>
 <script>
