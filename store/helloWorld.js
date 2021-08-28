@@ -137,7 +137,7 @@ export const mutations = {
         //((واسه آپدیت)).اگه آیدی موجود بود
         // برو ایندکس مورد نظرو پیدا کن و به جاش اینی که من میگمو اضافه کن
         state.notes.splice(state.notes.findIndex(n => n.id == note.id), 1, note): 
-        //واسه اضافه کرردن
+        //واسه اضافه کردن
         //اگه آیدی موجود نبود
         state.notes.push({...note, id: 1 + state.notes.length,archived:false});
     },

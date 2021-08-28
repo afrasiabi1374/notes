@@ -1,15 +1,14 @@
 <template>
-  <v-dialog :value="value" width="600px">
+  <v-dialog  :value="value" width="600px">
     <v-card v-if="value">
       <v-card-title>
         <v-text-field  
         label="title"
-        :rules="rules"
         hide-details="auto" class="form-title" v-model="formData.title"/>
       </v-card-title>
       <v-textarea 
         label="what to do?"
-        :rules="rules"
+        
         hide-details="auto" class="form-text" v-model="formData.text"/>
         <v-autocomplete
           v-model="formData.tagsId"
@@ -36,6 +35,7 @@
 <script>
   export default {
     props:['note', 'value'],
+
     data(){
       return {
         items: [],

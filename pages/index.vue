@@ -13,11 +13,11 @@
             color="teal"
             @click="formNote={title: '', text: '', tagsId: []};"
           >
-            <v-icon style="font-size: 2em;">mdi-pen-plus</v-icon>
+            <v-icon style="font-size:2em;">mdi-pen-plus</v-icon>
           </v-btn>
         </v-row>
       <!-- <note-form v-model="formNopte" :value="formNote" @input="(v) => formNote=v" /> -->
-      <note-form v-model="formNote" />
+      <note-form v-model="formNote"/>
   </div>
 </template>
 <script>
@@ -27,7 +27,7 @@
 
     export default {
       components: {CardNote,TodoNav,NoteForm},
-  
+
       data(){
         return{     
           // allNotes: this.$store.getters['helloWorld/showUnarchived'],
@@ -72,6 +72,7 @@
     align-items: center;
   } 
 .main-content{
+  min-height: 100vh;
   width: 70%;
   margin: auto;
 }

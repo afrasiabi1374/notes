@@ -1,5 +1,5 @@
 <template>
-  <v-card  class="card" @mouseover="cardElevationPluser()" @mouseleave="noCardElevation()" :elevation="cardElevation" outlined @click.self="$emit('click')" :style="[BgColor]" >
+  <v-card  class="card" @mouseover="cardElevationPluser()" @mouseleave="noCardElevation()" :elevation="cardElevation" outlined @click="$emit('click')" :style="[BgColor]" >
     <div class="card-content">
     <h2> {{note.title}} </h2>
     <br>
@@ -13,7 +13,7 @@
       <li id="color-hover" class="item-hover">
         <v-icon small>mdi-palette</v-icon>
           <v-radio-group class="color-container" v-model="BgColor.background" row>
-            <v-radio   class="color-item"  v-for="(bg,index) in bgCards"  :value="bg.colorVal" :key="index" :color="bg.colorVal" :style="{backgroundColor:bg.colorVal}" off-icon  >
+            <v-radio    class="color-item"  v-for="(bg,index) in bgCards"  :value="bg.colorVal" :key="index" :color="bg.colorVal" :style="{backgroundColor:bg.colorVal}" off-icon  >
               <template slot="label">
                 <span  class="tool-tip-color-name"><small>{{bg.colorLabel}}</small></span> 
               </template>
@@ -38,7 +38,8 @@
     return{
       BgColor:{background:'transparent'},
       bgCards:this.$store.state.helloWorld.colors,
-      cardElevation:0
+      cardElevation:0,
+      fakeVar:false
     }
   },
 computed:{
