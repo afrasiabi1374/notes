@@ -133,7 +133,8 @@ export const  state = () =>({
 })
 export const mutations = {
     saveNote(state, note){
-        note.id?
+        note.id?        
+        // برو ایندکس مورد نظرو پیدا کن و به جای عضوو اون ایندکس به طول یه دونه نوت اضافه کن
         state.notes.splice(state.notes.findIndex(n => n.id == note.id), 1, note): 
         state.notes.push({...note, id: 1 + state.notes.length,archived:false});
     },
