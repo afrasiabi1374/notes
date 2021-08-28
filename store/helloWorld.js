@@ -2,7 +2,7 @@ export const  state = () =>({
     notes:[
         {
             id: 1,
-            title: "cleane kitchen",
+            title: "clean kitchen",
             text: "you should clean kitchen",
             tagsId: [2, 5, 7],
             archived:false
@@ -134,16 +134,15 @@ export const  state = () =>({
 export const mutations = {
     saveNote(state, note){
         note.id?
-        state.notes[state.notes.findIndex(n => n.id == note.id)] = note:
+        state.notes.splice(state.notes.findIndex(n => n.id == note.id), 1, note): 
         state.notes.push({...note, id: 1 + state.notes.length,archived:false});
     },
     deleteNote(state, note){
         state.notes.splice(state.notes.findIndex(n => n.id == note.id), 1);
     },
     archiver(state,noteId){
-       console.log(state.notes.find(note=>note.id==noteId).archived = !state.notes.find(note=>note.id==noteId).archived);
+        console.log(state.notes.find(note=>note.id==noteId).archived = !state.notes.find(note=>note.id==noteId).archived);
     }
-
 }
 export const getters = {
     tagLabel: (state) => (tid) => {
@@ -151,9 +150,7 @@ export const getters = {
         // return tid
         // return tid
         return '# '+state.tags.find(t => t.id == tid).name;
-
     },
-
     notesByTag:(state) => (tagID) => {
         // console.log('dddddddddddd', parseInt(tagID);
         // tagID = parseInt(tagID)
@@ -162,11 +159,9 @@ export const getters = {
         // console.log('ddddddddd', tagID, state.notes.filter(note => note.tagsId.includes(tagID) ));
         return state.notes.filter(note => note.tagsId.includes(parseInt(tagID)) )
     },
-
     showUnarchived:(state)=>{
         return state.notes.filter(note=>note.archived === false)
     },
-
     archivedOrUnarchivedNotes:(state) => (archive, tagId = null) => {
         return state.notes.filter( note => {
             return note.archived === archive && (tagId? note.tagsId.includes(parseInt(tagId)): true)

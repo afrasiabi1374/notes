@@ -3,12 +3,11 @@
         <h3>unarchived</h3>
         <v-row class="unarchived">
             <template v-for="(note, index) in filterNotesUnarchive" >
-                <v-col v-if="note.archived === false" cols="12" sm="4" :key="index"  >
+                <v-col  cols="12" sm="4" :key="index"  >
                     <card-note   :note="note" @click="formNote=note"/>
                 </v-col>
             </template>
         </v-row>
-
         <h3>archived</h3>
         <v-row class="archived">
             <template v-for="(note, index) in filterNotesArchive" >
@@ -17,6 +16,7 @@
                 </v-col>
             </template>
         </v-row>
+        <note-form v-model="formNote" />
     </div>
 
 
@@ -24,10 +24,13 @@
 
 <script>
 import CardNote from '~/components/todoNotes/CardNote';
+import NoteForm from '~/components/todoNotes/NoteForm';
+
 export default {
-    components: {CardNote},
+    components: {CardNote,NoteForm},
     data(){
         return{
+            formNote: undefined,
             tagParam:this.$route.params.tag,
             notesOfTag:undefined
         }

@@ -1,6 +1,6 @@
 <template>
     <div class="main-content">
-        <v-row no-gutters style="">
+        <v-row class="mt-6" style="">
           <template v-for="(note, index) in filterNotes" >
             <v-col  cols="12" md="4" :key="index" >
               <card-note  :note="note" @click="formNote=note"/>
@@ -48,7 +48,8 @@
         // }
         filterNotes(){
           return this.$store.getters['helloWorld/archivedOrUnarchivedNotes'](false)
-        }  
+        }
+          
       },
       methods:{
       logger(){

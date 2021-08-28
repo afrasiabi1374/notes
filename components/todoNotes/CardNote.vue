@@ -1,24 +1,25 @@
 <template>
-  <v-card  class="card" elevation="5" outlined @click.self="$emit('click')" :style="[BgColor]" >
+  <v-card  class="card" @mouseover="cardElevationPluser()" @mouseleave="noCardElevation()" :elevation="cardElevation" outlined @click.self="$emit('click')" :style="[BgColor]" >
+    <div class="card-content">
     <h2> {{note.title}} </h2>
     <br>
     <p> {{  note.text.substr(0,21)+'...'}} </p>
-    <div class="container">
-        <v-chip v-for="t in note.tagsId" :key="t" class="ma-2" x-small>
-          {{ $store.getters['helloWorld/tagLabel'](t) }}
-        </v-chip>
+    <div  class=" chip-container">
+      <v-chip v-for="t in note.tagsId" :key="t" class="ma-2" x-small>
+        {{ $store.getters['helloWorld/tagLabel'](t) }}
+      </v-chip>
     </div>
     <ul class="card-buttom-nav">
       <li id="color-hover" class="item-hover">
         <v-icon small>mdi-palette</v-icon>
-              <v-radio-group class="color-container" v-model="BgColor.background" row    >
-              <v-radio   class="color-item"  v-for="(bg,index) in bgCards"  :value="bg.colorVal" :key="index" :color="bg.colorVal" :style="{backgroundColor:bg.colorVal}" off-icon  >
-                <template slot="label">
-                  <span  class="tool-tip-color-name"><small>{{bg.colorLabel}}</small></span> 
-                </template>
-              </v-radio>
-              </v-radio-group>
-            <span class="tool-tip"><small>colors</small></span> 
+          <v-radio-group class="color-container" v-model="BgColor.background" row>
+            <v-radio   class="color-item"  v-for="(bg,index) in bgCards"  :value="bg.colorVal" :key="index" :color="bg.colorVal" :style="{backgroundColor:bg.colorVal}" off-icon  >
+              <template slot="label">
+                <span  class="tool-tip-color-name"><small>{{bg.colorLabel}}</small></span> 
+              </template>
+             </v-radio>
+          </v-radio-group>
+          <span class="tool-tip"><small>colors</small></span> 
       </li>
       <li class="item-hover">
         <v-icon @click="idToArchiver" id="archive-hover" class="item-hover" small>mdi-package-down</v-icon>
@@ -27,7 +28,7 @@
         </span> 
       </li>
     </ul>
-
+  </div>
   </v-card>
 </template>
 <script>
@@ -35,66 +36,83 @@
   props: ['note'],
   data(){
     return{
-      BgColor:{background:'transparent',margin:'15px'},
+      BgColor:{background:'transparent'},
       bgCards:this.$store.state.helloWorld.colors,
+      cardElevation:0
     }
   },
+computed:{
+  returnNotes:{
+    get(){
+      return 3
+    },
+    set(val){
+      return val
+    }
+  }
+}
+  ,
   methods:{
-
     logger(){
       console.log(this.note.id);
     },
-
+    cardElevationPluser(){
+      this.cardElevation = 2;
+    },
+    noCardElevation(){
+      this.cardElevation = 0;
+    },
     idToArchiver(){
-       this.$store.commit('helloWorld/archiver', this.note.id)
-      // this.$emit('click')
+      this.$store.commit('helloWorld/archiver', this.note.id)
+      //this.$emit('click')
       console.log(this.note.id);
       console.log(this.$store.getters['helloWorld/showUnarchived']);
-
-    }
-
+    },
   }
   }
 </script>
 <style >
-
   .card{
- 
-      padding: 30px;
-      margin-bottom: 10px;
-      transition: all 1s;
+    text-align: left;
+    padding: 25px 5px;
+    transition: all 1s;
   }
-
-  .container{
-    display: flex;
+  .card-content{
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   }
   .item-hover{
-    margin-left: 11%;
+    margin-left:10px;
   }
   .card-buttom-nav{
+    margin: auto;
     display: flex;
+    justify-content: center;
+    align-items: center;
     list-style-type: none;
     visibility: hidden;
     opacity: 0;
-    transition: all 1.2s;
+    transition: all .5s;
   }
   .color-hover{
     position: relative;
   }
-  
   .color-container{
     background-color: aliceblue;
     height: 100px;
     border-radius:4px;
-    display: none;
+    display:flex;
     width: 180px;
     position: absolute;
-    top:22%;
-    z-index: 2;
-  
+    z-index: 3;
+    visibility: hidden;
+    bottom: 50px;
   }
   .color-item{
-    transition: all 1s;
+    transition: all .3s;
     width: 26px;
     margin: auto;
     padding-right: 5px;
@@ -118,12 +136,13 @@
   .tool-tip{
     display: none;
     position: absolute;
-    bottom: 0;
+    margin-top: 10px;
     background-color: #5f6061;
     color: white;
     padding: 3px 15px;
     border-radius: 5px;
     transition-delay: 1s;
+   
   }
    .tool-tip-color-name{
     position: absolute;
@@ -134,10 +153,7 @@
     border-radius: 5px; 
     position: absolute;
     
-    top: 200%;
-    right: 100%;
-   
-    
+
   }
   /* hovers */
   .color-item:hover .tool-tip-color-name{
@@ -148,22 +164,22 @@
       cursor: pointer;
   }
   .card:hover .card-buttom-nav{
-    transition: all 1.2s;
+    transition: all .5s;
     opacity: 1;
     visibility: visible;
   }
   #color-hover:hover .color-container{
     transition: all 1s;
-    display:flex;
+    visibility:visible
   }
   #color-hover:hover .color-container .color-item:hover{
-    transition: all 1s;
+    transition: all .3s;
     border: 2px solid black;
   }
   .item-hover:hover .tool-tip{
     display: flex;
     
-  }
-   /* end hovers */
+  } 
+/* end hovers */
 </style>
 
