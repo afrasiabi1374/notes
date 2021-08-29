@@ -1,10 +1,10 @@
 <template>
-  <v-card  class="card" @mouseover="cardElevationPluser()" @mouseleave="noCardElevation()" :elevation="cardElevation" outlined @click="$emit('click')" :style="[BgColor]" >
+  <v-card  class="card" @mouseover="cardElevationPluser()" @mouseleave="noCardElevation()" :elevation="cardElevation" outlined @click.self="$emit('click',note)" :style="[BgColor]" >
     <div class="card-content">
     <h2> {{note.title}} </h2>
     <br>
-    <p> {{  note.text.substr(0,21)+'...'}} </p>
-    <div  class=" chip-container">
+    <p> {{note.text.substr(0,21)+'...'}}</p>
+    <div class="chip-container">
       <v-chip v-for="t in note.tagsId" :key="t" class="ma-2" x-small>
         {{ $store.getters['helloWorld/tagLabel'](t) }}
       </v-chip>
@@ -13,7 +13,7 @@
       <li id="color-hover" class="item-hover">
         <v-icon small>mdi-palette</v-icon>
           <v-radio-group class="color-container" v-model="BgColor.background" row>
-            <v-radio    class="color-item"  v-for="(bg,index) in bgCards"  :value="bg.colorVal" :key="index" :color="bg.colorVal" :style="{backgroundColor:bg.colorVal}" off-icon  >
+            <v-radio  @click="preventer"   class="color-item"  v-for="(bg,index) in bgCards"  :value="bg.colorVal" :key="index" :color="bg.colorVal" :style="{backgroundColor:bg.colorVal}" off-icon  >
               <template slot="label">
                 <span  class="tool-tip-color-name"><small>{{bg.colorLabel}}</small></span> 
               </template>
@@ -69,6 +69,9 @@ computed:{
       console.log(this.note.id);
       console.log(this.$store.getters['helloWorld/showUnarchived']);
     },
+    preventer(event){
+      event.preventDefault();
+    }
   }
   }
 </script>

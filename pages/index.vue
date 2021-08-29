@@ -3,7 +3,7 @@
         <v-row class="mt-6" style="">
           <template v-for="(note, index) in filterNotes" >
             <v-col  cols="12" md="4" :key="index" >
-              <card-note  :note="note" @click="formNote=note"/>
+              <card-note  :note="note" @click="formNote=note;"/>
             </v-col>
           </template>
           <v-btn
@@ -17,23 +17,21 @@
           </v-btn>
         </v-row>
       <!-- <note-form v-model="formNopte" :value="formNote" @input="(v) => formNote=v" /> -->
-      <note-form v-model="formNote"/>
+      <note-form v-model="formNote" fff />
+    
   </div>
 </template>
 <script>
     import NoteForm from '~/components/todoNotes/NoteForm';
     import CardNote from '~/components/todoNotes/CardNote';
     import TodoNav from '~/components/todoNotes/nav/TodoNav';
-
     export default {
       components: {CardNote,TodoNav,NoteForm},
-
       data(){
         return{     
           // allNotes: this.$store.getters['helloWorld/showUnarchived'],
           formNote: undefined,
           emptyNoteForAdd:{title: "", text: ""},
-          
         }
       },
       // watch:{
@@ -48,17 +46,19 @@
         // }
         filterNotes(){
           return this.$store.getters['helloWorld/archivedOrUnarchivedNotes'](false)
-        }
-          
+        }  
       },
       methods:{
       logger(){
-      console.log(this.showTag);
+        console.log(this.NoteForm);
       }
     },
-    created(){
+  created(){
       
-    }
+  },
+  updated(){
+    console.log(this.formNote);
+}
   }
 </script>
 <style>

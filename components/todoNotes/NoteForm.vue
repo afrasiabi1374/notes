@@ -1,5 +1,5 @@
 <template>
-  <v-dialog  :value="value" width="600px">
+  <v-dialog  :value="value" width="600px" @click:outside="$emit('input', undefined)">
     <v-card v-if="value">
       <v-card-title>
         <v-text-field  
@@ -8,7 +8,6 @@
       </v-card-title>
       <v-textarea 
         label="what to do?"
-        
         hide-details="auto" class="form-text" v-model="formData.text"/>
         <v-autocomplete
           v-model="formData.tagsId"
@@ -35,7 +34,6 @@
 <script>
   export default {
     props:['note', 'value'],
-
     data(){
       return {
         items: [],
