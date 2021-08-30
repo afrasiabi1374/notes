@@ -61,7 +61,7 @@ export default {
 .container-ar{
   width: 70%;
   margin: auto;
-    
+    color: teal;
 }
 .unarchived,.archived{
     min-height: 80vh;

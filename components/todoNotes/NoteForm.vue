@@ -10,6 +10,7 @@
         label="what to do?"
         hide-details="auto" class="form-text" v-model="formData.text"/>
         <v-autocomplete
+          append-icon="mdi-tag"
           v-model="formData.tagsId"
           :items="tags"
           outlined

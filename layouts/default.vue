@@ -3,6 +3,7 @@
     <v-toolbar dark color="teal">
     <v-toolbar-title>State selection</v-toolbar-title>
       <v-autocomplete
+        
         v-model="select"
         :items="filterNotesTitle"
         :search-input.sync="search"
@@ -21,7 +22,7 @@
     </v-toolbar>
     <div class="index-container">
       <!-- to do nav -->
-      <todo-nav></todo-nav>
+        <todo-nav></todo-nav>
        <!--end to do nav -->
       <div class="main-content">
       <nuxt/>
