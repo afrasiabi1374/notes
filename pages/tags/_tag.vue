@@ -17,6 +17,7 @@
             </template>
         </v-row>
         <note-form v-model="formNote" />
+        
     </div>
 
 
@@ -35,6 +36,12 @@ export default {
             notesOfTag:undefined
         }
     },
+// watch:{
+//     tagParam(){
+//         console.log(this.tagParam);
+//     }
+// }
+//     ,
     created(){
         this.notesOfTag=this.$store.getters['helloWorld/notesByTag'](this.tagParam)
             

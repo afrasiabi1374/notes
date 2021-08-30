@@ -1,10 +1,7 @@
 <template>
-    <v-toolbar
-        dark
-        color="teal"
-    >
-        <v-toolbar-title bar-title>State selection</v-toolbar-title>
-        <v-autocomplete
+  <v-toolbar dark color="teal">
+    <v-toolbar-title bar-title>State selection</v-toolbar-title>
+      <v-autocomplete
         v-model="select"
         :loading="loading"
         :items="filterNotesTitle"
@@ -18,11 +15,11 @@
         solo-inverted
         item-text="title"
         clearable
-        ></v-autocomplete>
-        <v-btn icon>
-            <v-icon>mdi-dots-vertical</v-icon>
-        </v-btn>
-    </v-toolbar>
+      ></v-autocomplete>
+      <v-btn icon>
+        <v-icon>mdi-dots-vertical</v-icon>
+      </v-btn>
+  </v-toolbar>
 </template>
 <script>
   export default {

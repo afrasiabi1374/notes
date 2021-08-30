@@ -1,12 +1,11 @@
 <template>
-    <div class="main-content">
         <v-row class="mt-6" style="">
           <template v-for="(note, index) in filterNotes" >
             <v-col  cols="12" md="4" :key="index" >
               <card-note  :note="note" @click="formNote=note;"/>
             </v-col>
           </template>
-          <v-btn
+                          <v-btn
             class="mx-2 add-btn"
             fab
             dark
@@ -15,11 +14,9 @@
           >
             <v-icon style="font-size:2em;">mdi-pen-plus</v-icon>
           </v-btn>
+          <note-form v-model="formNote" fff />
         </v-row>
-      <!-- <note-form v-model="formNopte" :value="formNote" @input="(v) => formNote=v" /> -->
-      <note-form v-model="formNote" fff />
-    
-  </div>
+        
 </template>
 <script>
     import NoteForm from '~/components/todoNotes/NoteForm';
@@ -31,7 +28,6 @@
         return{     
           // allNotes: this.$store.getters['helloWorld/showUnarchived'],
           formNote: undefined,
-          emptyNoteForAdd:{title: "", text: ""},
         }
       },
       // watch:{
@@ -48,17 +44,7 @@
           return this.$store.getters['helloWorld/archivedOrUnarchivedNotes'](false)
         }  
       },
-      methods:{
-      logger(){
-        console.log(this.NoteForm);
-      }
-    },
-  created(){
-      
-  },
-  updated(){
-    console.log(this.formNote);
-}
+
   }
 </script>
 <style>
