@@ -77,7 +77,15 @@ export const  state = () =>({
         },
         {
             id:7,
-            name:"happy"
+            name:"easy"
+        },
+        {
+            id:8,
+            name:"expert"
+        },
+        {
+            id:9,
+            name:"so-so"
         },
     ],
     colors:[

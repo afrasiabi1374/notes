@@ -17,12 +17,8 @@
             </template>
         </v-row>
         <note-form v-model="formNote" />
-        
     </div>
-
-
 </template>
-
 <script>
 import CardNote from '~/components/todoNotes/CardNote';
 import NoteForm from '~/components/todoNotes/NoteForm';
@@ -44,7 +40,6 @@ export default {
 //     ,
     created(){
         this.notesOfTag=this.$store.getters['helloWorld/notesByTag'](this.tagParam)
-            
     },
     computed:{
         filterNotesUnarchive(){
